@@ -849,10 +849,42 @@ section{
 }
 
 
-@media (max-width: 1024px){
-    section{
+
+@media (max-width: 1456px){
+    header{
+        position: fixed;
+    }
+    .navbar{
+        display: none;
+
+    }
+
+    section.home{
+        width: 100%;
+        overflow: hidden;
+    }
+
+    section.contact{
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
+    }
+
+    section.skills_section{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+
+    section.skills_section .heading1.prof{
+        margin-top: 130px;
+        text-align: center;
+    }
+
+
 }
+
+
