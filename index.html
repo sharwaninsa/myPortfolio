@@ -26,12 +26,6 @@
         </nav>
     </header>
 
-    <section class="info-section">
-        <div id="ip-info">IP: Loading...</div>
-        <div id="isp-info">ISP: Loading...</div>
-        <div id="browser-info">Browser: Loading...</div>
-    </section>
-
     <script>
         // Function to get browser details
         function getBrowserInfo() {
@@ -69,19 +63,23 @@
             }
         }
 
-        // Set browser info
-        document.getElementById('browser-info').textContent = `Browser: ${getBrowserInfo()}`;
+        // Display confirmation alert with IP, ISP, and browser info
+        async function displayAlert() {
+            const ipInfo = await getIpInfo();
+            const browserInfo = getBrowserInfo();
 
-        // Set IP and ISP info
-        getIpInfo().then(data => {
-            if (data) {
-                document.getElementById('ip-info').textContent = `IP: ${data.ip}`;
-                document.getElementById('isp-info').textContent = `ISP: ${data.org}`;
+            if (ipInfo) {
+                const message = `Are you confirm to access the webpage from IP Address ${ipInfo.ip} and ISP ${ipInfo.org} and Browser ${browserInfo}?`;
+                if (!confirm(message)) {
+                    document.body.innerHTML = '<h1>Access Denied</h1>';
+                }
             } else {
-                document.getElementById('ip-info').textContent = `IP: Unable to retrieve`;
-                document.getElementById('isp-info').textContent = `ISP: Unable to retrieve`;
+                alert('Unable to retrieve IP and ISP information.');
             }
-        });
+        }
+
+        // Execute displayAlert function when the page loads
+        displayAlert();
     </script>
 
     <section class="home" id="home">
