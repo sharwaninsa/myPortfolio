@@ -26,12 +26,11 @@
         </nav>
     </header>
 
-    <section class="ip">
-        <div class="navbar-ip">
+    <section class="info-section">
         <div id="ip-info">IP: Loading...</div>
         <div id="isp-info">ISP: Loading...</div>
         <div id="browser-info">Browser: Loading...</div>
-    </div>
+    </section>
 
     <script>
         // Function to get browser details
@@ -61,7 +60,7 @@
         // Function to get IP and ISP info
         async function getIpInfo() {
             try {
-                const response = await fetch('https://ipinfo.io/json?token=7d5f5ec23e6e3b');
+                const response = await fetch('https://ipinfo.io/json?token=YOUR_TOKEN_HERE');
                 const data = await response.json();
                 return data;
             } catch (error) {
@@ -84,7 +83,6 @@
             }
         });
     </script>
-    </section>
 
     <section class="home" id="home">
         <div class="home-content">
